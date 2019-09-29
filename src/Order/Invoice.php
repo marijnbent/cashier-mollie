@@ -54,6 +54,13 @@ class Invoice
     protected $receiverAddress;
 
     /**
+     * A collection of strings representing lines of the supplier address.
+     *
+     * @var Collection
+     */
+    protected $supplierAddress;
+
+    /**
      * The customer starting balance.
      *
      * @var \Money\Money
@@ -96,6 +103,7 @@ class Invoice
         $this->date = $date ?: Carbon::now();
         $this->items = new Collection;
         $this->receiverAddress = new Collection;
+        $this->supplierAddress = new Collection;
         $this->extraInformation = new Collection;
     }
 
@@ -305,6 +313,31 @@ class Invoice
     public function setReceiverAddress(array $lines)
     {
         $this->receiverAddress = new Collection($lines);
+
+        return $this;
+    }
+
+    /**
+     * Get the supplier address. By default a collection of lines (strings) is returned.
+     * If you provide separator, an imploded string is returned.
+     *
+     * @param null $separator
+     * @return \Illuminate\Support\Collection|string
+     */
+    public function supplierAddress($separator = null)
+    {
+        return $this->optionallyImplode($this->supplierAddress, $separator);
+    }
+
+    /**
+     * Set the supplier address using an array of strings.
+     *
+     * @param array $lines
+     * @return $this
+     */
+    public function setSupplierAddress(array $lines)
+    {
+        $this->supplierAddress = new Collection($lines);
 
         return $this;
     }

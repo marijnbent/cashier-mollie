@@ -89,6 +89,16 @@ Once you have pulled in the package:
    {
        return [$this->name, $this->email];
    }
+   /**
+    * Get the supplier information for the invoice.
+    * Typically includes the name and some sort of (E-mail/physical) address.
+    *
+    * @return array An array of strings
+    */
+   public function getSupplierInvoiceInformation()
+   {
+       return ['Company', 'noreply@example.com'];
+   }
 
    /**
     * Get additional information to be displayed on the invoice. Typically a note provided by the customer.

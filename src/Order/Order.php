@@ -242,6 +242,7 @@ class Order extends Model
             ->setUsedBalance($this->getCreditUsed());
 
         $invoice->setReceiverAddress($this->owner->getInvoiceInformation());
+        $invoice->setSupplierAddress($this->owner->getSupplierInvoiceInformation());
 
         $extra_information = null;
         $owner = $this->owner;

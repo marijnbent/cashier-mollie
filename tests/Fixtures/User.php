@@ -30,6 +30,11 @@ class User extends Model implements ProvidesInvoiceInformation
         return [$this->name, $this->email];
     }
 
+    public function getSupplierInvoiceInformation()
+    {
+        return ['Company', 'noreply@example.com'];
+    }
+
     /**
      * Get additional information to be displayed on the invoice.
      * Typically a note provided by the customer.

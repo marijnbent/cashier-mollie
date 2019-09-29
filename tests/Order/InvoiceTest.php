@@ -85,6 +85,24 @@ class InvoiceTest extends BaseTestCase
     }
 
     /** @test */
+    public function canSetSupplierAddress()
+    {
+        $invoice = new Invoice('EUR');
+
+        $invoice = $invoice->setSupplierAddress([
+            'Company',
+            'noreply@example.com',
+        ]);
+
+        $this->assertEquals(collect([
+            'Company',
+            'noreply@example.com',
+        ]), $invoice->supplierAddress());
+
+        $this->assertEquals('Company<br>noreply@example.com', $invoice->supplierAddress('<br>'));
+    }
+
+    /** @test */
     public function canSetDate()
     {
         $now = Carbon::parse('Feb 14 2016');

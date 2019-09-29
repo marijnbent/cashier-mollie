@@ -173,6 +173,22 @@
 
                                         </table>
                                     </td>
+                                    <td>
+                                        <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                                            <tr>
+                                                <td style="padding-bottom:14px;padding-top:24px;font-size:30px">
+                                                    Our details
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-top:12px;padding-bottom:16px">
+                                                    @foreach($invoice->supplierAddress() as $line)
+                                                    {{ $line }}<br>
+                                                    @endforeach
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
